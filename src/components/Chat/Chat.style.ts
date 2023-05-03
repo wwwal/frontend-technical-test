@@ -20,7 +20,7 @@ const ChatDrawerHeader = styled('div')(({ theme }) => ({
 
 const ChatBottomBox = styled('div')(({ theme }) => ({
     position: 'fixed',
-    zIndex: 1,
+    zIndex: 0,
     bottom: 0,
     left: 0,
     right: 0,
