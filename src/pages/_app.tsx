@@ -1,12 +1,23 @@
+import { Provider } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import CssBaseline from '@mui/material/CssBaseline'
 import type { AppProps } from 'next/app'
-import { getLoggedUserId } from '../utils/getLoggedUserId'
-import '../styles/globals.css'
 
-// Default way to get a logged user
-export const loggedUserId = getLoggedUserId()
+import '../i18n/config';
+import '../styles/globals.css'
+import GlobalAlert from '../components/Alert/GlobalAlert'
+import store from '../store'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const { ready } = useTranslation();
+  
+  if (!ready) return 'loading translations...';
+
+  return <Provider store={store}>
+    <CssBaseline />
+    <Component {...pageProps} />
+    <GlobalAlert />
+  </Provider>
 }
 
 export default MyApp
