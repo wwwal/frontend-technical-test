@@ -1,0 +1,20 @@
+{
+    "error": {
+        "ERR_BAD_REQUEST": "An error happened. Sorry for that, retry later"
+    },
+    "chat": {
+        "title": "Chat Test",
+        "welcome": "Let's start !",
+        "enter_text": "Type some text",
+        "delete_warning": {
+            "title": "Are you sure you want to delete this conversation ?",
+            "body": "You will not have access to any message or picture inside this conversation. Do you want to continue ?"
+        },
+        "empty_conversation": "No message found in this conversation"
+    },
+    "global": {
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "you": "You"
+    }
+}
