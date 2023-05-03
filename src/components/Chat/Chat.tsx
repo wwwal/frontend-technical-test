@@ -15,7 +15,6 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next';
-import AddIcon from '@mui/icons-material/Add';
 import axios, { AxiosError } from 'axios';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -77,6 +76,7 @@ const Chat = ({ loading, deleteEnabled = false }: ChatProps) => {
             ))
             setCurrentConversationId(0)
         }
+        setListOpen(false)
         setCreateDialogOpen(false)
     };
 
@@ -96,6 +96,7 @@ const Chat = ({ loading, deleteEnabled = false }: ChatProps) => {
                 dispatch(removeConversation(id))
             })
             .catch((error: AxiosError) => {
+                console.log
                 dispatch(setLastAlert({ type: 'error', message: error.code }))
             })
     };
@@ -177,6 +178,7 @@ const Chat = ({ loading, deleteEnabled = false }: ChatProps) => {
                     <ChatList
                         deleteOnClick={deleteEnabled ? handleClickDelete : null}
                         selectOnClick={handleClickThread}
+                        newOnClick={() => setCreateDialogOpen(true)}
                     />
                 </ChatDrawer>
                 <ChatMain open={listOpen}>
@@ -187,32 +189,22 @@ const Chat = ({ loading, deleteEnabled = false }: ChatProps) => {
                     />
                 </ChatMain>
                 <ChatBottomBox>
-                    {
-                        null === currentConversationId ?
-                            (
-                                <Fab color="secondary" aria-label="create new conversation" onClick={() => setCreateDialogOpen(true)}>
-                                    <AddIcon />
-                                </Fab>
-                            ) :
-                            (
-                                <ChatTextField>
-                                    <TextField
-                                        value={currentMessage}
-                                        id="chat-text-field"
-                                        label={t('enter_text')}
-                                        multiline
-                                        maxRows={4}
-                                        fullWidth
-                                        onChange={(e) => {
-                                            setCurrentMessage(e.target.value)
-                                        }}
-                                    />
-                                    <Fab size="small" color="primary" aria-label="send message" onClick={() => handleNewMessage()}>
-                                        <SendIcon />
-                                    </Fab>
-                                </ChatTextField>
-                            )
-                    }
+                    <ChatTextField>
+                        <TextField
+                            value={currentMessage}
+                            id="chat-text-field"
+                            label={t('enter_text')}
+                            multiline
+                            maxRows={4}
+                            fullWidth
+                            onChange={(e) => {
+                                setCurrentMessage(e.target.value)
+                            }}
+                        />
+                        <Fab size="small" color="primary" aria-label="send message" onClick={() => handleNewMessage()}>
+                            <SendIcon />
+                        </Fab>
+                    </ChatTextField>
                 </ChatBottomBox>
             </Box>
             <Dialog
