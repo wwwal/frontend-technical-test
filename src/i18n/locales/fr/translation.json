@@ -1,0 +1,20 @@
+{
+    "error" : {
+        "ERR_BAD_REQUEST": "Oups. Une erreur a eu lieur de notre côté, veuillez réessayer dans quelques instants"
+    },
+    "chat": {
+        "title": "Chat Test",
+        "welcome": "Commencez à chater !",
+        "enter_text": "Saisissez votre message",
+        "delete_warning": {
+            "title": "Etes-vous sûr ?",
+            "body": "Vous n'aurez plus accès à aucun message ou image de cette conversation. Souhaitez-vous continuer ?" 
+        },
+        "empty_conversation": "Pas de message"
+    },
+    "global": {
+        "cancel": "Annuler",
+        "confirm": "Confifmer",
+        "you": "Vous"
+    }
+}
